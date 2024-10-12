@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dialogs/log_out.dart';
+import 'package:flutter_application_1/habit_note/home/me_destination/about_view.dart';
+import 'package:flutter_application_1/habit_note/home/me_destination/settings_view.dart';
 
 class MeView extends StatelessWidget {
   const MeView({super.key});
@@ -32,19 +35,23 @@ class MeView extends StatelessWidget {
             leading: Icon(Icons.archive),
             title: Text('Archive notes'),
           ),
-          const ListTile(
+          ListTile(
             contentPadding: EdgeInsets.only(left: 48),
+            onTap: () => Navigator.push(context, SettingsView.route()),
             leading: Icon(Icons.settings),
             title: Text('Settings'),
           ),
-          const ListTile(
+          ListTile(
             contentPadding: EdgeInsets.only(left: 48),
+            onTap: () => Navigator.push(context, AboutView.route()),
             leading: Icon(Icons.info),
             title: Text('About'),
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () async {
+              await logOut(context);
+            },
             label: const Text('LOG OUT'),
             icon: const Icon(Icons.logout),
           )

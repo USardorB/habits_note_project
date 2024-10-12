@@ -10,6 +10,8 @@ import 'package:flutter_application_1/habit_note/onboarding/page_item.dart';
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
 
+  static Route route() => MaterialPageRoute(builder: (context) => Onboarding());
+
   @override
   State<Onboarding> createState() => _OnboardingState();
 }
