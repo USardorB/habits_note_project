@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/vertical_more_button.dart';
 
 class AddOrUpdateTodosView extends StatefulWidget {
@@ -35,9 +36,7 @@ class _AddOrUpdateTodosViewState extends State<AddOrUpdateTodosView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add To-do'),
-        actions: [
-          VerticalMoreBtton(onColorSelected: (x) => changeColor(x)),
-        ],
+        actions: [VerticalMoreBtton(onColorSelected: (x) => changeColor(x))],
       ),
       body: Padding(
         padding: const EdgeInsets.all(18),
@@ -45,7 +44,6 @@ class _AddOrUpdateTodosViewState extends State<AddOrUpdateTodosView> {
           children: [
             TextField(
               controller: _task,
-              style: const TextStyle(fontSize: 23),
               decoration: InputDecoration(
                 icon: IconButton(
                   onPressed: () {
@@ -58,7 +56,7 @@ class _AddOrUpdateTodosViewState extends State<AddOrUpdateTodosView> {
                   icon: const Icon(Icons.add),
                 ),
                 hintText: 'Type something...',
-                hintStyle: const TextStyle(fontSize: 23),
+                hintStyle: context.textTheme.titleSmall,
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
@@ -68,6 +66,7 @@ class _AddOrUpdateTodosViewState extends State<AddOrUpdateTodosView> {
               (e) => ListTile(
                 leading: Checkbox(value: false, onChanged: (ad) {}),
                 title: Text(e),
+                titleTextStyle: context.textTheme.bodyMedium,
               ),
             )
           ],

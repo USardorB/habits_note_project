@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 Future<void> takeOrUploadPicture(BuildContext context) async {
   return await showDialog(
@@ -12,10 +13,12 @@ Future<void> takeOrUploadPicture(BuildContext context) async {
             ListTile(
               leading: Icon(Icons.photo_camera),
               title: Text('Take photo'),
+              titleTextStyle: context.textTheme.titleSmall,
             ),
             ListTile(
               leading: Icon(Icons.photo_library),
               title: Text('Choose from gallery'),
+              titleTextStyle: context.textTheme.titleSmall,
             )
           ],
         ),

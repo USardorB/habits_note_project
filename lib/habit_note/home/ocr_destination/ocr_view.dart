@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
 import 'package:flutter_application_1/dialogs/take_or_import_pic.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class OcrView extends StatelessWidget {
   const OcrView({super.key});
@@ -10,6 +11,7 @@ class OcrView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Image to Text'),
+        titleTextStyle: context.textTheme.headlineLarge,
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.copy))],
       ),
       floatingActionButton: FloatingActionButton(
@@ -32,7 +34,10 @@ class OcrView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: const Center(
-                  child: Text('Upload an image using the “+” button'),
+                  child: Text(
+                    'Upload an image using the “+” button',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
@@ -44,7 +49,10 @@ class OcrView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: const Center(
-                  child: Text('Click the “Scan Image” button to perform scan'),
+                  child: Text(
+                    'Click the “Scan Image” button to perform scan',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
@@ -59,7 +67,6 @@ class OcrView extends StatelessWidget {
                   ),
                   child: const Text(
                     'Clear Image',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ),
                 const SizedBox(width: 14),
@@ -71,7 +78,6 @@ class OcrView extends StatelessWidget {
                   ),
                   child: const Text(
                     'Scan Image',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                 ),
               ],

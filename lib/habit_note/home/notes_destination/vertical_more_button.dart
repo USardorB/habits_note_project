@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class VerticalMoreBtton extends StatelessWidget {
   final Function(int) onColorSelected;
@@ -21,10 +22,7 @@ class VerticalMoreBtton extends StatelessWidget {
                   title: Text('Delete note'),
                   shape: UnderlineInputBorder(),
                 ),
-                const Text(
-                  'Select Color',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-                ),
+                Text('Select Color', style: context.textTheme.titleLarge),
                 GridView.builder(
                   padding: const EdgeInsets.symmetric(
                     vertical: 24,

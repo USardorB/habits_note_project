@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dialogs/log_out.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/about_view.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/settings_view.dart';
 
@@ -11,6 +12,7 @@ class MeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Me'),
+        titleTextStyle: context.textTheme.headlineLarge,
       ),
       body: Column(
         children: [

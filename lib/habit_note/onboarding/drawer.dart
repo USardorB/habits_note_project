@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class OnboardingDrawer extends StatelessWidget {
   const OnboardingDrawer({super.key});
@@ -19,19 +20,18 @@ class OnboardingDrawer extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 84),
-            const ListTile(
-              title: Text(
-                'HaBIT Note',
-                style: TextStyle(fontFamily: 'FugazOne', fontSize: 24),
+            ListTile(
+              title: Text('HaBIT Note'),
+              titleTextStyle: context.textTheme.titleSmall!.copyWith(
+                fontFamily: 'FugazOne',
               ),
-              subtitle: Text('V1.0.0', style: TextStyle(fontSize: 18)),
+              subtitle: Text('V1.0.0'),
               contentPadding: EdgeInsets.only(left: 60),
               shape: UnderlineInputBorder(),
             ),
             ListTile(
               title: const Text(
                 'Forgot Password',
-                style: TextStyle(fontSize: 18),
               ),
               contentPadding: const EdgeInsets.only(left: 60),
               onTap: () {},
@@ -39,7 +39,6 @@ class OnboardingDrawer extends StatelessWidget {
             ListTile(
               title: const Text(
                 'Privacy Policy',
-                style: TextStyle(fontSize: 18),
               ),
               contentPadding: const EdgeInsets.only(left: 60),
               onTap: () {},
@@ -47,7 +46,6 @@ class OnboardingDrawer extends StatelessWidget {
             ListTile(
               title: const Text(
                 'Terms of Use',
-                style: TextStyle(fontSize: 18),
               ),
               contentPadding: const EdgeInsets.only(left: 60),
               onTap: () {},

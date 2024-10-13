@@ -35,7 +35,11 @@ class _LogInViewState extends State<LogInView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Log In')),
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        title: const Text('Log In'),
+        backgroundColor: bgColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: Column(
@@ -43,11 +47,9 @@ class _LogInViewState extends State<LogInView> {
           children: [
             const Text(
               'Welcome back !',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             const Text(
               'Please login with your credentials',
-              style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
             ),
             const SizedBox(height: 100),
             AuthForm(email: _email, password: _password),
@@ -62,14 +64,12 @@ class _LogInViewState extends State<LogInView> {
                 ),
                 child: const Text(
                   'Forgot password?',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
                 ),
               ),
             ]),
             const SizedBox(height: 64),
             const Text(
               'Don’t have an account yet ?',
-              style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
             ),
             InkWell(
               onTap: () => Navigator.pushReplacement(
@@ -78,13 +78,6 @@ class _LogInViewState extends State<LogInView> {
               ),
               child: const Text(
                 'Create an account here',
-                style: TextStyle(
-                  color: primaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  decoration: TextDecoration.underline,
-                  decorationColor: primaryColor,
-                ),
               ),
             ),
             const SizedBox(height: 120),

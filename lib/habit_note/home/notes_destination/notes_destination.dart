@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
 import 'package:flutter_application_1/dialogs/filter.dart';
 import 'package:flutter_application_1/dialogs/note_todo.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeVeiw extends StatefulWidget {
@@ -18,6 +19,7 @@ class _HomeVeiwState extends State<HomeVeiw> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notes'),
+        titleTextStyle: context.textTheme.headlineLarge,
         actions: [
           IconButton(
             onPressed: () async {

@@ -17,11 +17,9 @@ class PageItem extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 32),
           title: Text(
             info.title,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
             info.subtitle,
-            style: const TextStyle(fontSize: 18),
           ),
         )
       ],

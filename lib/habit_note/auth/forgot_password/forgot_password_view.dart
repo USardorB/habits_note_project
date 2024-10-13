@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/consts/colors.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 
 class ForgotPasswordView extends StatefulWidget {
@@ -29,7 +30,11 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Forgot Password')),
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        title: const Text('Forgot Password'),
+        backgroundColor: bgColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: Column(
@@ -37,7 +42,6 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           children: [
             const Text(
               'Please enter your account’s email address and we will send you a link to reset your password.',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
             ),
             const SizedBox(height: 72),
             AuthForm(email: _email),

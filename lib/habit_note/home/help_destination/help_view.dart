@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class HelpView extends StatelessWidget {
   const HelpView({super.key});
@@ -9,19 +10,21 @@ class HelpView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Help'),
+        titleTextStyle: context.textTheme.headlineLarge,
         elevation: 0,
         backgroundColor: primaryColor,
       ),
       body: Column(
         children: [
-          const DecoratedBox(
+          DecoratedBox(
             decoration: BoxDecoration(color: primaryColor),
             child: SizedBox(
               height: 200,
               child: Center(
                   child: Text(
                 'User Guide',
-                style: TextStyle(fontSize: 48, color: secondaryColor),
+                style: context.textTheme.displayLarge!
+                    .copyWith(color: Colors.white),
               )),
             ),
           ),
@@ -36,11 +39,9 @@ class HelpView extends StatelessWidget {
               leading: Icon(Icons.sticky_note_2, size: 60, color: Colors.white),
               title: Text(
                 'Notes',
-                style: TextStyle(fontSize: 24),
               ),
               subtitle: Text(
                 'Tap to view',
-                style: TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -55,11 +56,9 @@ class HelpView extends StatelessWidget {
               leading: Icon(Icons.image_search, size: 60, color: Colors.white),
               title: Text(
                 'OCR',
-                style: TextStyle(fontSize: 24),
               ),
               subtitle: Text(
                 'Tap to view',
-                style: TextStyle(fontSize: 18),
               ),
             ),
           ),
@@ -74,11 +73,9 @@ class HelpView extends StatelessWidget {
               leading: Icon(Icons.lock, size: 60, color: Colors.white),
               title: Text(
                 'Reset Password',
-                style: TextStyle(fontSize: 24),
               ),
               subtitle: Text(
                 'Tap to view',
-                style: TextStyle(fontSize: 18),
               ),
             ),
           ),

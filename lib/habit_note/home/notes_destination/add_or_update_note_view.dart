@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/vertical_more_button.dart';
 
 class AddOrUpdateNoteView extends StatefulWidget {
@@ -45,26 +46,26 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
         children: [
           TextField(
             controller: _title,
-            decoration: const InputDecoration(
+            style: context.textTheme.headlineLarge,
+            decoration: InputDecoration(
               hintText: 'Title',
-              hintStyle: TextStyle(fontSize: 48),
+              hintStyle: context.textTheme.displayLarge,
               border: InputBorder.none,
               enabledBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
             ),
-            style: const TextStyle(fontSize: 48),
           ),
           TextField(
             controller: _description,
             maxLines: null,
-            decoration: const InputDecoration(
+            minLines: 15,
+            decoration: InputDecoration(
               hintText: 'Type something...',
-              hintStyle: TextStyle(fontSize: 23),
+              hintStyle: context.textTheme.titleSmall,
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
             ),
-            style: const TextStyle(fontSize: 23),
           ),
         ],
       ),

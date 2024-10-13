@@ -41,17 +41,19 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account')),
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        title: const Text('Create Account'),
+        backgroundColor: bgColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Text(
             'Let’s get to know you !',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           const Text(
             'Enter your details to continue',
-            style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
           ),
           const SizedBox(height: 24),
           AuthForm(
@@ -63,7 +65,6 @@ class _RegisterViewState extends State<RegisterView> {
           const SizedBox(height: 24),
           const Text(
             'Already have an account?',
-            style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
           ),
           InkWell(
             onTap: () => Navigator.pushReplacement(
@@ -72,31 +73,21 @@ class _RegisterViewState extends State<RegisterView> {
             ),
             child: const Text(
               'Login here',
-              style: TextStyle(
-                color: primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                decoration: TextDecoration.underline,
-                decorationColor: primaryColor,
-              ),
             ),
           ),
           const SizedBox(height: 60),
           const Text.rich(
             TextSpan(
               text: 'By clicking the “CREATE ACCOUNT” button, you agree to ',
-              style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
               children: [
                 TextSpan(
                   text: 'Terms of use',
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                 ),
                 TextSpan(
                   text: ' and ',
                 ),
                 TextSpan(
                   text: 'Privacy Policy',
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                 ),
               ],
             ),

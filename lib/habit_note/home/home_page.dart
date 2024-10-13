@@ -47,8 +47,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: bgColor,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black,
-        selectedLabelStyle: const TextStyle(fontSize: 18),
-        unselectedLabelStyle: const TextStyle(fontSize: 18),
         type: BottomNavigationBarType.fixed,
       ),
     );

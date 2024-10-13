@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class AboutView extends StatelessWidget {
   static Route route() {
@@ -27,10 +28,10 @@ class AboutView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 42),
             child: Column(
               children: [
-                pageItem(() {}, 'Application', 'HaBIT Note'),
-                pageItem(() {}, 'Version', 'V1.0.0'),
-                pageItem(() {}, 'Privacy Policy'),
-                pageItem(() {}, 'Terms of Use'),
+                pageItem(context, () {}, 'Application', 'HaBIT Note'),
+                pageItem(context, () {}, 'Version', 'V1.0.0'),
+                pageItem(context, () {}, 'Privacy Policy'),
+                pageItem(context, () {}, 'Terms of Use'),
               ],
             ),
           ),
@@ -40,6 +41,7 @@ class AboutView extends StatelessWidget {
   }
 
   MaterialButton pageItem(
+    BuildContext context,
     void Function() onTap,
     String title, [
     String? trailing,
@@ -50,7 +52,7 @@ class AboutView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title),
-          Text(trailing ?? '', style: TextStyle(fontWeight: FontWeight.w300)),
+          Text(trailing ?? '', style: context.textTheme.bodySmall),
         ],
       ),
     );

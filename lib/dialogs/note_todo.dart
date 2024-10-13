@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_note_view.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_todos_view.dart';
 
@@ -13,19 +14,15 @@ Future<void> showTypeDialog(BuildContext context) async {
           children: [
             ListTile(
               leading: const Icon(Icons.keyboard, size: 36),
-              title: const Text(
-                'Add note',
-                style: TextStyle(fontSize: 24),
-              ),
+              title: const Text('Add note'),
+              titleTextStyle: context.textTheme.titleSmall,
               onTap: () => Navigator.pushReplacement(
                   context, AddOrUpdateNoteView.route()),
             ),
             ListTile(
               leading: const Icon(Icons.check_box, size: 36),
-              title: const Text(
-                'Add to-do',
-                style: TextStyle(fontSize: 24),
-              ),
+              title: const Text('Add to-do'),
+              titleTextStyle: context.textTheme.titleSmall,
               onTap: () => Navigator.pushReplacement(
                 context,
                 AddOrUpdateTodosView.route(),
