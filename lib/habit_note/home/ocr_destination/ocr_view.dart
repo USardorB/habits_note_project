@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/dialogs/take_or_import_pic.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
+import 'package:flutter_application_1/enum/option_dialog_type.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 
 class OcrView extends StatelessWidget {
   const OcrView({super.key});
@@ -16,7 +18,10 @@ class OcrView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await takeOrUploadPicture(context);
+          await showChoseOneOptionDialog(
+            context,
+            OptionDialogType.editorSelection,
+          );
         },
         shape: const CircleBorder(),
         backgroundColor: primaryColor,
@@ -41,7 +46,7 @@ class OcrView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 24),
+            24.h,
             Flexible(
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -56,7 +61,7 @@ class OcrView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 42),
+            42.h,
             Row(
               children: [
                 TextButton(
@@ -69,7 +74,7 @@ class OcrView extends StatelessWidget {
                     'Clear Image',
                   ),
                 ),
-                const SizedBox(width: 14),
+                14.w,
                 TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(

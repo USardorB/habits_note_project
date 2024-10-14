@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 import 'package:flutter_application_1/habit_note/auth/login/login_view.dart';
 import 'package:flutter_application_1/habit_note/home/home_page.dart';
@@ -49,50 +51,61 @@ class _RegisterViewState extends State<RegisterView> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text(
+          Text(
             'Let’s get to know you !',
+            style: context.textTheme.titleMedium,
           ),
-          const Text(
+          Text(
             'Enter your details to continue',
+            style: context.textTheme.displayMedium,
           ),
-          const SizedBox(height: 24),
+          24.h,
           AuthForm(
             name: _name,
             email: _email,
             password: _password,
             rePassword: _rePassword,
           ),
-          const SizedBox(height: 24),
-          const Text(
+          24.h,
+          Text(
             'Already have an account?',
+            style: context.textTheme.displayMedium,
           ),
           InkWell(
             onTap: () => Navigator.pushReplacement(
               context,
               LogInView.route(),
             ),
-            child: const Text(
+            child: Text(
               'Login here',
+              style: context.textTheme.titleMedium!.copyWith(
+                color: primaryColor,
+                decoration: TextDecoration.underline,
+                decorationColor: primaryColor,
+              ),
             ),
           ),
-          const SizedBox(height: 60),
-          const Text.rich(
+          60.h,
+          Text.rich(
             TextSpan(
               text: 'By clicking the “CREATE ACCOUNT” button, you agree to ',
+              style: context.textTheme.displayMedium,
               children: [
                 TextSpan(
                   text: 'Terms of use',
+                  style: context.textTheme.titleMedium,
                 ),
                 TextSpan(
                   text: ' and ',
                 ),
                 TextSpan(
                   text: 'Privacy Policy',
+                  style: context.textTheme.titleMedium,
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 14),
+          14.h,
           ElevatedButton(
             onPressed: () => Navigator.pushAndRemoveUntil(
               context,

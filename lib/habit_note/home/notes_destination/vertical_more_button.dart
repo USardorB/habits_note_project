@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
 
 class VerticalMoreBtton extends StatelessWidget {
   final Function(int) onColorSelected;

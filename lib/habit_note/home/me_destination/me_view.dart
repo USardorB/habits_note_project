@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/dialogs/log_out.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/dialog/coinfirmation_dialog.dart';
+import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/about_view.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/settings_view.dart';
 
@@ -18,9 +20,9 @@ class MeView extends StatelessWidget {
         children: [
           Row(
             children: [
-              const SizedBox(width: 40),
+              40.w,
               Image.asset('assets/images/profile_pic.png', scale: 1.2),
-              const SizedBox(width: 10),
+              10.w,
               const Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +32,7 @@ class MeView extends StatelessWidget {
                   ])
             ],
           ),
-          const SizedBox(height: 36),
+          36.h,
           const Divider(),
           const ListTile(
             contentPadding: EdgeInsets.only(left: 48),
@@ -49,10 +51,13 @@ class MeView extends StatelessWidget {
             leading: Icon(Icons.info),
             title: Text('About'),
           ),
-          const SizedBox(height: 24),
+          24.h,
           ElevatedButton.icon(
             onPressed: () async {
-              await logOut(context);
+              await showConfirmationDialog(
+                context,
+                ConfirmationDialogType.logout,
+              );
             },
             label: const Text('LOG OUT'),
             icon: const Icon(Icons.logout),

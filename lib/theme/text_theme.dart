@@ -7,9 +7,10 @@ final TextTheme textTheme = TextTheme(
   bodyLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
   labelLarge: TextStyle(fontSize: 18),
   displayLarge: TextStyle(fontSize: 48),
+  displayMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
   headlineLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
   titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-  titleMedium: TextStyle(fontSize: 18),
+  titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
   titleSmall: TextStyle(fontSize: 24), //TODO use this for note card's text
 );
 
@@ -18,4 +19,3 @@ final TextTheme textTheme = TextTheme(
 // labelMedium: TextStyle(fontSize: 3),
 // headlineMedium: TextStyle(fontSize: 3)
 // displaySmall: TextStyle(fontSize: 3)
-// displayMedium: TextStyle(fontSize: 3)

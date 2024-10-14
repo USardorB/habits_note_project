@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 
 class AboutView extends StatelessWidget {
   static Route route() {
@@ -23,7 +24,7 @@ class AboutView extends StatelessWidget {
             decoration: BoxDecoration(color: primaryColor),
             child: Image.asset('assets/images/logo.png', height: 190, scale: 2),
           ),
-          SizedBox(height: 28),
+          28.h,
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 42),
             child: Column(

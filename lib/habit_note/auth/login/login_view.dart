@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/forgot_password/forgot_password_view.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 import 'package:flutter_application_1/habit_note/auth/register/register_view.dart';
@@ -45,13 +47,15 @@ class _LogInViewState extends State<LogInView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
+            Text(
               'Welcome back !',
+              style: context.textTheme.titleMedium,
             ),
-            const Text(
+            Text(
               'Please login with your credentials',
+              style: context.textTheme.displayMedium,
             ),
-            const SizedBox(height: 100),
+            100.h,
             AuthForm(email: _email, password: _password),
             Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               TextButton(
@@ -62,25 +66,32 @@ class _LogInViewState extends State<LogInView> {
                 style: TextButton.styleFrom(
                   foregroundColor: const Color(0xff000000),
                 ),
-                child: const Text(
+                child: Text(
                   'Forgot password?',
+                  style: context.textTheme.displayMedium,
                 ),
               ),
             ]),
-            const SizedBox(height: 64),
-            const Text(
+            64.h,
+            Text(
               'Don’t have an account yet ?',
+              style: context.textTheme.displayMedium,
             ),
             InkWell(
               onTap: () => Navigator.pushReplacement(
                 context,
                 RegisterView.route(),
               ),
-              child: const Text(
+              child: Text(
                 'Create an account here',
+                style: context.textTheme.titleMedium!.copyWith(
+                  color: primaryColor,
+                  decoration: TextDecoration.underline,
+                  decorationColor: primaryColor,
+                ),
               ),
             ),
-            const SizedBox(height: 120),
+            120.h,
             ElevatedButton(
               onPressed: () => Navigator.pushAndRemoveUntil(
                 context,

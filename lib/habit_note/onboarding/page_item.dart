@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/enums/onboarding.dart';
+import 'package:flutter_application_1/enum/onboarding_info.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PageItem extends StatelessWidget {
@@ -10,9 +11,9 @@ class PageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 28),
+        28.h,
         SvgPicture.asset(info.image),
-        const SizedBox(height: 4),
+        4.h,
         ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 32),
           title: Text(

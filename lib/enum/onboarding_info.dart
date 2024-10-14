@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/consts/images.dart';
+import 'package:flutter_application_1/const/images.dart';
 
 enum OnboardingInfo {
   note(

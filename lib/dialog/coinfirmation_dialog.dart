@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
-import 'package:flutter_application_1/habit_note/onboarding/onboarding_view.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
 
-Future<void> logOut(BuildContext context) async {
+Future<bool> showConfirmationDialog(
+  BuildContext context,
+  ConfirmationDialogType type,
+) async {
   return await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text('Log out'),
-        content: Text('Are you sure you want to log out?'),
+        title: Text(type.title),
+        content: Text(type.prompt),
         contentTextStyle: context.textTheme.bodySmall,
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () => Navigator.pop(context, false),
             style: ElevatedButton.styleFrom(
               backgroundColor: secondaryColor,
               foregroundColor: inputFieldColor.withOpacity(0.26),
@@ -26,21 +29,17 @@ Future<void> logOut(BuildContext context) async {
             child: Text('No'),
           ),
           ElevatedButton(
-            onPressed: () => Navigator.pushAndRemoveUntil(
-              context,
-              OnboardingView.route(),
-              (route) => false,
-            ),
+            onPressed: () => Navigator.pop(context, true),
             style: ElevatedButton.styleFrom(
               maximumSize: Size(125, 42),
               shape: ContinuousRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: Text('Log out'),
+            child: Text(type.actionText),
           ),
         ],
       );
     },
-  );
+  ).then((value) => value ?? false);
 }

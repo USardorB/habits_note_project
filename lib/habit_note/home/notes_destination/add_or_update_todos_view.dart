@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/vertical_more_button.dart';
 
-class AddOrUpdateTodosView extends StatefulWidget {
-  const AddOrUpdateTodosView({super.key});
+class AddOrUpdateTodoView extends StatefulWidget {
+  const AddOrUpdateTodoView({super.key});
 
   static Route route() => MaterialPageRoute(
-        builder: (context) => const AddOrUpdateTodosView(),
+        builder: (context) => const AddOrUpdateTodoView(),
       );
 
   @override
-  State<AddOrUpdateTodosView> createState() => _AddOrUpdateTodosViewState();
+  State<AddOrUpdateTodoView> createState() => _AddOrUpdateTodoViewState();
 }
 
-class _AddOrUpdateTodosViewState extends State<AddOrUpdateTodosView> {
+class _AddOrUpdateTodoViewState extends State<AddOrUpdateTodoView> {
   late final TextEditingController _task;
   int _color = 0;
   List<String> tasks = [];

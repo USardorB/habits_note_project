@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/dialogs/filter.dart';
-import 'package:flutter_application_1/dialogs/note_todo.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/dialog/filter_dialog.dart';
+import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
+import 'package:flutter_application_1/enum/option_dialog_type.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_note_view.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_todos_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeVeiw extends StatefulWidget {
@@ -40,7 +44,12 @@ class _HomeVeiwState extends State<HomeVeiw> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await showTypeDialog(context);
+          final option = await showChoseOneOptionDialog(
+            context,
+            OptionDialogType.editorSelection,
+          );
+          if (option == 1) Navigator.push(context, AddOrUpdateNoteView.route());
+          if (option == 2) Navigator.push(context, AddOrUpdateTodoView.route());
         },
         shape: const CircleBorder(),
         backgroundColor: primaryColor,
@@ -55,7 +64,7 @@ class _HomeVeiwState extends State<HomeVeiw> {
             'assets/images/rafiki.svg',
             alignment: AlignmentDirectional.center,
           ),
-          const SizedBox(height: 36),
+          36.h,
           const Text(
             'Create your first note !',
             textAlign: TextAlign.center,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
+import 'package:flutter_application_1/const/colors.dart';
 
 Future<Color?> showColorFilter(BuildContext context) async => await showDialog(
       context: context,

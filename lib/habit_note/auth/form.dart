@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 
 class AuthForm extends StatelessWidget {
   final TextEditingController? name;
@@ -25,7 +26,7 @@ class AuthForm extends StatelessWidget {
               prefixIcon: Icon(Icons.person_outline),
             ),
           ),
-        if (name != null) const SizedBox(height: 24),
+        if (name != null) 24.h,
         TextField(
           controller: email,
           decoration: const InputDecoration(
@@ -33,7 +34,7 @@ class AuthForm extends StatelessWidget {
             prefixIcon: Icon(Icons.email_outlined),
           ),
         ),
-        if (password != null) const SizedBox(height: 24),
+        if (password != null) 24.h,
         if (password != null)
           TextField(
             controller: password,
@@ -46,7 +47,7 @@ class AuthForm extends StatelessWidget {
                   selectedIcon: const Icon(Icons.visibility_outlined),
                 )),
           ),
-        if (rePassword != null) const SizedBox(height: 24),
+        if (rePassword != null) 24.h,
         if (rePassword != null)
           TextField(
             controller: rePassword,

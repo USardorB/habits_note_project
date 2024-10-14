@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/colors.dart';
-import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extension/sized_box.dart';
 
 class OnboardingDrawer extends StatelessWidget {
   const OnboardingDrawer({super.key});
@@ -19,7 +20,7 @@ class OnboardingDrawer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 84),
+            84.w,
             ListTile(
               title: Text('HaBIT Note'),
               titleTextStyle: context.textTheme.titleSmall!.copyWith(
