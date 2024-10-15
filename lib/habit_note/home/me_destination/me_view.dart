@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/const/images.dart';
 import 'package:flutter_application_1/dialog/coinfirmation_dialog.dart';
 import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
 import 'package:flutter_application_1/extension/build_context.dart';
@@ -21,7 +22,7 @@ class MeView extends StatelessWidget {
           Row(
             children: [
               40.w,
-              Image.asset('assets/images/profile_pic.png', scale: 1.2),
+              Image.asset(profilePic, scale: 1.2),
               10.w,
               const Column(
                   mainAxisSize: MainAxisSize.min,

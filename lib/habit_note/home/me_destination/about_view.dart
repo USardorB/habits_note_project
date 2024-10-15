@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/const/images.dart';
 import 'package:flutter_application_1/extension/build_context.dart';
 import 'package:flutter_application_1/extension/sized_box.dart';
 
@@ -22,7 +23,7 @@ class AboutView extends StatelessWidget {
         children: [
           DecoratedBox(
             decoration: BoxDecoration(color: primaryColor),
-            child: Image.asset('assets/images/logo.png', height: 190, scale: 2),
+            child: Image.asset(logo, height: 190, scale: 2),
           ),
           28.h,
           Padding(

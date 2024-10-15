@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/const/images.dart';
 import 'package:flutter_application_1/dialog/filter_dialog.dart';
 import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
 import 'package:flutter_application_1/enum/option_dialog_type.dart';
@@ -61,7 +62,7 @@ class _HomeVeiwState extends State<HomeVeiw> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SvgPicture.asset(
-            'assets/images/rafiki.svg',
+            noNotes,
             alignment: AlignmentDirectional.center,
           ),
           36.h,
