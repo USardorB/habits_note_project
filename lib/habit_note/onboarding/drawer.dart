@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/const/colors.dart';
 import 'package:flutter_application_1/extension/build_context.dart';
 import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/habit_note/auth/forgot_password/forgot_password_view.dart';
 
 class OnboardingDrawer extends StatelessWidget {
   const OnboardingDrawer({super.key});
@@ -20,7 +21,7 @@ class OnboardingDrawer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            84.w,
+            84.h,
             ListTile(
               title: Text('HaBIT Note'),
               titleTextStyle: context.textTheme.titleSmall!.copyWith(
@@ -31,22 +32,25 @@ class OnboardingDrawer extends StatelessWidget {
               shape: UnderlineInputBorder(),
             ),
             ListTile(
-              title: const Text(
+              title: Text(
                 'Forgot Password',
+                style: context.textTheme.bodyMedium,
               ),
               contentPadding: const EdgeInsets.only(left: 60),
-              onTap: () {},
+              onTap: () => Navigator.push(context, ForgotPasswordView.route()),
             ),
             ListTile(
-              title: const Text(
+              title: Text(
                 'Privacy Policy',
+                style: context.textTheme.bodyMedium,
               ),
               contentPadding: const EdgeInsets.only(left: 60),
               onTap: () {},
             ),
             ListTile(
-              title: const Text(
+              title: Text(
                 'Terms of Use',
+                style: context.textTheme.bodyMedium,
               ),
               contentPadding: const EdgeInsets.only(left: 60),
               onTap: () {},

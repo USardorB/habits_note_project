@@ -24,6 +24,18 @@ class OnboardingView extends StatefulWidget {
 
 class _OnboardingViewState extends State<OnboardingView> {
   int index = 0;
+  late final PageController _controller;
+  @override
+  void initState() {
+    _controller = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +70,10 @@ class _OnboardingViewState extends State<OnboardingView> {
               SizedBox(
                 height: 470,
                 child: PageView(
-                  onPageChanged: (value) => setState(() => index = value),
+                  controller: _controller,
+                  onPageChanged: (value) {
+                    setState(() => index = value);
+                  },
                   children: const [
                     PageItem(info: OnboardingInfo.note),
                     PageItem(info: OnboardingInfo.todo),
@@ -66,7 +81,18 @@ class _OnboardingViewState extends State<OnboardingView> {
                   ],
                 ),
               ),
-              PageIndicator(index: index),
+              PageIndicator(
+                index: index,
+                onTap: (i) {
+                  index = i;
+                  _controller.animateToPage(
+                    index,
+                    duration: Durations.extralong3,
+                    curve: Curves.linearToEaseOut,
+                  );
+                  setState(() {});
+                },
+              ),
               40.h,
               ElevatedButton(
                 onPressed: () => Navigator.push(context, RegisterView.route()),

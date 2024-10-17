@@ -30,10 +30,13 @@ class AboutView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 42),
             child: Column(
               children: [
-                pageItem(context, () {}, 'Application', 'HaBIT Note'),
-                pageItem(context, () {}, 'Version', 'V1.0.0'),
-                pageItem(context, () {}, 'Privacy Policy'),
-                pageItem(context, () {}, 'Terms of Use'),
+                pageItem(context, 'Application', 'HaBIT Note'),
+                20.h,
+                pageItem(context, 'Version', 'V1.0.0'),
+                20.h,
+                pageItem(context, 'Privacy Policy', null, () {}),
+                20.h,
+                pageItem(context, 'Terms of Use', null, () {}),
               ],
             ),
           ),
@@ -42,14 +45,14 @@ class AboutView extends StatelessWidget {
     );
   }
 
-  MaterialButton pageItem(
+  InkWell pageItem(
     BuildContext context,
-    void Function() onTap,
     String title, [
     String? trailing,
+    void Function()? onTap,
   ]) {
-    return MaterialButton(
-      onPressed: onTap,
+    return InkWell(
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
