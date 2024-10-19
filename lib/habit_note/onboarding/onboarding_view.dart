@@ -50,8 +50,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         if (context.mounted && shouldPop) SystemNavigator.pop(animated: true);
       },
       child: Scaffold(
-        backgroundColor: bgColor,
-        appBar: AppBar(backgroundColor: bgColor),
+        appBar: AppBar(),
         drawer: const OnboardingDrawer(),
         body: Column(
           children: [
@@ -102,7 +101,8 @@ class _OnboardingViewState extends State<OnboardingView> {
               ElevatedButton(
                 onPressed: () => Navigator.push(context, LogInView.route()),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: secondaryColor,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.secondary.withOpacity(0.1),
                   foregroundColor: primaryColor,
                 ),
                 child: const Text('LOG IN'),

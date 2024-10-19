@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/const/colors.dart';
@@ -8,6 +6,8 @@ import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
 import 'package:flutter_application_1/enum/option_dialog_type.dart';
 import 'package:flutter_application_1/extension/build_context.dart';
 import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/habit_note/home/ocr_destination/image_placeholder_box.dart';
+import 'package:flutter_application_1/habit_note/home/ocr_destination/text_placeholder_pbox.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -92,56 +92,9 @@ class _OcrViewState extends State<OcrView> {
         padding: const EdgeInsets.all(28),
         child: Column(
           children: [
-            Flexible(
-              child: Container(
-                padding: EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: StreamBuilder<XFile?>(
-                    stream: _imageStreamController.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        if (snapshot.data != null) {
-                          return Image.file(File(snapshot.data!.path));
-                        }
-                      }
-                      return Text(
-                        'Upload an image using the “+” button',
-                        textAlign: TextAlign.center,
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
+            ImagePlaceholderBox(imageStreamController: _imageStreamController),
             24.h,
-            Flexible(
-              child: Container(
-                padding: EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: StreamBuilder(
-                    stream: _textStreamController.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return SelectableText(
-                          snapshot.data!,
-                        );
-                      }
-                      return Text(
-                        'Click the “Scan Image” button to perform scan',
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
+            TextPlaceholderBox(textStreamController: _textStreamController),
             42.h,
             Row(
               children: [

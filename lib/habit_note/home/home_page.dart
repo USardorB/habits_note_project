@@ -57,9 +57,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
           iconSize: 36,
-          backgroundColor: bgColor,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
+          backgroundColor:
+              Theme.of(context).colorScheme.secondary.withOpacity(0.01),
+          selectedItemColor: Theme.of(context).colorScheme.onSurface,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
           type: BottomNavigationBarType.fixed,
         ),
       ),

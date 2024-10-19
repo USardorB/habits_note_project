@@ -43,10 +43,8 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
       appBar: AppBar(
         title: const Text('Create Account'),
-        backgroundColor: bgColor,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),

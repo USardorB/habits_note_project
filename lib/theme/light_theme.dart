@@ -5,6 +5,17 @@ import 'package:flutter_application_1/theme/text_theme.dart';
 ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(elevation: 0, scrolledUnderElevation: 0),
   textTheme: textTheme,
+  colorScheme: ColorScheme(
+    brightness: Brightness.light,
+    primary: primaryColor,
+    onPrimary: secondaryColor,
+    secondary: secondaryColor,
+    onSecondary: inputFieldColor,
+    error: Colors.red,
+    onError: secondaryColor,
+    surface: secondaryColor,
+    onSurface: Colors.black,
+  ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: TextStyle(
       color: inputFieldColor.withOpacity(0.5),

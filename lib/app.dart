@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/habit_note/onboarding/onboarding_view.dart';
+import 'package:flutter_application_1/theme/dark_theme.dart';
 import 'package:flutter_application_1/theme/light_theme.dart';
 
 class HabitNoteApp extends StatelessWidget {
@@ -11,8 +12,8 @@ class HabitNoteApp extends StatelessWidget {
       title: 'HaBIT Note',
       home: const RootPage(),
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      // darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
+      darkTheme: darkTheme,
       theme: lightTheme,
     );
   }
