@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/const/images.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/consts/images.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 
 class AboutView extends StatelessWidget {
   static Route route() {
@@ -16,13 +15,13 @@ class AboutView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('About'),
-        backgroundColor: primaryColor,
+        backgroundColor: context.appColors.primary,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           DecoratedBox(
-            decoration: BoxDecoration(color: primaryColor),
+            decoration: BoxDecoration(color: context.appColors.primary),
             child: Image.asset(logo, height: 190, scale: 2),
           ),
           28.h,
@@ -57,7 +56,12 @@ class AboutView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title),
-          Text(trailing ?? '', style: context.textTheme.bodySmall),
+          Text(
+            trailing ?? '',
+            style: context.textTheme.bodySmall?.copyWith(
+              color: context.appColors.onSurface,
+            ),
+          ),
         ],
       ),
     );

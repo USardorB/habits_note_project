@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/enums/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 Future<bool> showConfirmationDialog(
   BuildContext context,
@@ -13,16 +12,18 @@ Future<bool> showConfirmationDialog(
       return AlertDialog(
         title: Text(type.title),
         content: Text(type.prompt),
-        contentTextStyle: context.textTheme.bodySmall,
+        contentTextStyle: context.textTheme.bodySmall!.copyWith(
+          color: context.appColors.onSurface,
+        ),
         actions: [
           ElevatedButton(
             onPressed: () => Navigator.pop(context, false),
             style: ElevatedButton.styleFrom(
-              backgroundColor: secondaryColor,
-              foregroundColor: inputFieldColor.withOpacity(0.26),
+              backgroundColor: context.appColors.secondary,
+              foregroundColor: context.appColors.onSurface,
               shape: ContinuousRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: inputFieldColor.withOpacity(0.26)),
+                side: BorderSide(),
               ),
               maximumSize: Size(125, 42),
             ),

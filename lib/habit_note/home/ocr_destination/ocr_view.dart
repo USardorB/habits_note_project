@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
-import 'package:flutter_application_1/enum/option_dialog_type.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/dialogs/chose_one_option_dialog.dart';
+import 'package:flutter_application_1/enums/option_dialog_type.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/home/ocr_destination/image_placeholder_box.dart';
 import 'package:flutter_application_1/habit_note/home/ocr_destination/text_placeholder_pbox.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -24,6 +23,7 @@ class _OcrViewState extends State<OcrView> {
   late final StreamController<String?> _textStreamController;
   XFile? myImage;
   String clipBoardText = '';
+
   @override
   void initState() {
     _imageStreamController = StreamController<XFile?>.broadcast();
@@ -54,6 +54,24 @@ class _OcrViewState extends State<OcrView> {
     _textStreamController.sink.add(clipBoardText);
   }
 
+  Future<void> copyResult(BuildContext context) async {
+    await Clipboard.setData(ClipboardData(text: clipBoardText));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          width: 120,
+          duration: Durations.long1,
+          padding: EdgeInsets.all(10),
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          content: Text('Text copied'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +80,7 @@ class _OcrViewState extends State<OcrView> {
         titleTextStyle: context.textTheme.headlineLarge,
         actions: [
           IconButton(
-            onPressed: () async {
-              await Clipboard.setData(
-                ClipboardData(text: clipBoardText),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Text copied')),
-              );
-            },
+            onPressed: () async => await copyResult(context),
             icon: const Icon(Icons.copy),
           )
         ],
@@ -84,8 +95,8 @@ class _OcrViewState extends State<OcrView> {
           if (x == 2) await pickImage(ImageSource.gallery);
         },
         shape: const CircleBorder(),
-        backgroundColor: primaryColor,
-        foregroundColor: secondaryColor,
+        backgroundColor: context.appColors.primary,
+        foregroundColor: context.appColors.surface,
         child: const Icon(Icons.add, size: 48),
       ),
       body: Padding(
@@ -105,7 +116,7 @@ class _OcrViewState extends State<OcrView> {
                   },
                   style: TextButton.styleFrom(
                     shape: const StadiumBorder(side: BorderSide()),
-                    foregroundColor: Colors.black,
+                    foregroundColor: context.appColors.onSurface,
                   ),
                   child: const Text(
                     'Clear Image',
@@ -119,8 +130,8 @@ class _OcrViewState extends State<OcrView> {
                     }
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    foregroundColor: secondaryColor,
+                    backgroundColor: context.appColors.primary,
+                    foregroundColor: context.appColors.surface,
                   ),
                   child: const Text(
                     'Scan Image',

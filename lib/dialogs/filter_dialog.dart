@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/consts/color_plate.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 Future<Color?> showColorFilter(BuildContext context) async => await showDialog(
       context: context,
@@ -29,11 +30,11 @@ Future<Color?> showColorFilter(BuildContext context) async => await showDialog(
               return MaterialButton(
                 onPressed: () => Navigator.pop(
                   context,
-                  filterColors[index],
+                  colorPlate[index],
                 ),
-                color: filterColors.elementAt(index),
+                color: colorPlate.elementAt(index),
                 shape: StadiumBorder(
-                  side: filterColors[index] == secondaryColor
+                  side: colorPlate[index] == context.appColors.surface
                       ? const BorderSide()
                       : BorderSide.none,
                 ),

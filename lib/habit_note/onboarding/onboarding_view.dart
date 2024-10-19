@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/dialog/coinfirmation_dialog.dart';
-import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
-import 'package:flutter_application_1/enum/onboarding_info.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/dialogs/coinfirmation_dialog.dart';
+import 'package:flutter_application_1/enums/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/enums/onboarding_info.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/login/login_view.dart';
 import 'package:flutter_application_1/habit_note/auth/register/register_view.dart';
 import 'package:flutter_application_1/habit_note/onboarding/drawer.dart';
@@ -101,9 +100,9 @@ class _OnboardingViewState extends State<OnboardingView> {
               ElevatedButton(
                 onPressed: () => Navigator.push(context, LogInView.route()),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-                  foregroundColor: primaryColor,
+                  elevation: 8,
+                  backgroundColor: context.appColors.secondary,
+                  foregroundColor: context.appColors.primary,
                 ),
                 child: const Text('LOG IN'),
               ),

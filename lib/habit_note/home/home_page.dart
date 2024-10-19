@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/dialog/coinfirmation_dialog.dart';
-import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/dialogs/coinfirmation_dialog.dart';
+import 'package:flutter_application_1/enums/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/help_destination/help_view.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/me_view.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/notes_destination.dart';
@@ -57,10 +57,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
           iconSize: 36,
-          backgroundColor:
-              Theme.of(context).colorScheme.secondary.withOpacity(0.01),
-          selectedItemColor: Theme.of(context).colorScheme.onSurface,
-          unselectedItemColor: Theme.of(context).colorScheme.onSurface,
+          elevation: 1,
+          backgroundColor: context.appColors.secondary.withOpacity(0.7),
+          selectedItemColor: context.appColors.onSurface,
+          unselectedItemColor: context.appColors.onSurface,
           type: BottomNavigationBarType.fixed,
         ),
       ),

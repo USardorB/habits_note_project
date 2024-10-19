@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/images.dart';
-import 'package:flutter_application_1/dialog/coinfirmation_dialog.dart';
-import 'package:flutter_application_1/enum/confirmation_dialog_type.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/consts/images.dart';
+import 'package:flutter_application_1/dialogs/coinfirmation_dialog.dart';
+import 'package:flutter_application_1/enums/confirmation_dialog_type.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/about_view.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/settings_view.dart';
 

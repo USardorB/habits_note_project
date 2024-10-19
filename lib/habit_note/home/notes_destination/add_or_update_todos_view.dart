@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/vertical_more_button.dart';
 
 class AddOrUpdateTodoView extends StatefulWidget {
@@ -57,14 +57,20 @@ class _AddOrUpdateTodoViewState extends State<AddOrUpdateTodoView> {
                 ),
                 hintText: 'Type something...',
                 hintStyle: context.textTheme.titleSmall,
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
+                border: UnderlineInputBorder(),
+                focusedBorder: UnderlineInputBorder(),
+                enabledBorder: UnderlineInputBorder(),
               ),
             ),
             ...tasks.map(
               (e) => ListTile(
-                leading: Checkbox(value: false, onChanged: (ad) {}),
+                leading: IconButton(
+                  onPressed: () {
+                    tasks.remove(e);
+                    setState(() {});
+                  },
+                  icon: Icon(Icons.remove),
+                ),
                 title: Text(e),
                 titleTextStyle: context.textTheme.bodyMedium,
               ),

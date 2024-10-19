@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/enum/onboarding_info.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/enums/onboarding_info.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PageItem extends StatelessWidget {

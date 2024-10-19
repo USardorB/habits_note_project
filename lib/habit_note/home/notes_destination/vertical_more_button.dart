@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/consts/color_plate.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class VerticalMoreBtton extends StatelessWidget {
   final Function(int) onColorSelected;
@@ -10,9 +10,10 @@ class VerticalMoreBtton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Scaffold.of(context).showBottomSheet(
-          backgroundColor: bgColor,
-          (context) {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: context.appColors.surface,
+          builder: (context) {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -41,9 +42,9 @@ class VerticalMoreBtton extends StatelessWidget {
                         onColorSelected(index);
                         Navigator.pop(context);
                       },
-                      color: filterColors.elementAt(index),
+                      color: colorPlate.elementAt(index),
                       shape: CircleBorder(
-                        side: filterColors[index] == secondaryColor
+                        side: colorPlate[index] == context.appColors.surface
                             ? const BorderSide()
                             : BorderSide.none,
                       ),

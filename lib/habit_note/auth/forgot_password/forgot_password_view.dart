@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 
 class ForgotPasswordView extends StatefulWidget {

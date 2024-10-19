@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/forgot_password/forgot_password_view.dart';
 
 class OnboardingDrawer extends StatelessWidget {
@@ -13,7 +12,10 @@ class OnboardingDrawer extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [const Color(0xffF1F1F1).withOpacity(0.5), primaryColor],
+            colors: [
+              const Color(0xffF1F1F1).withOpacity(0.5),
+              context.appColors.primary,
+            ],
             stops: const [0.15, 1],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

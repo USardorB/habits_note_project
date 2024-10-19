@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/forgot_password/forgot_password_view.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 import 'package:flutter_application_1/habit_note/auth/register/register_view.dart';
@@ -83,9 +82,9 @@ class _LogInViewState extends State<LogInView> {
               child: Text(
                 'Create an account here',
                 style: context.textTheme.titleMedium!.copyWith(
-                  color: primaryColor,
+                  color: context.appColors.primary,
                   decoration: TextDecoration.underline,
-                  decorationColor: primaryColor,
+                  decorationColor: context.appColors.primary,
                 ),
               ),
             ),

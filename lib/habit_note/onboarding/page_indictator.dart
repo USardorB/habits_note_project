@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class PageIndicator extends StatelessWidget {
   final int index;
@@ -18,7 +18,9 @@ class PageIndicator extends StatelessWidget {
             curve: Easing.emphasizedAccelerate,
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
-              color: index == this.index ? primaryColor : secondaryColor,
+              color: index == this.index
+                  ? context.appColors.primary
+                  : context.appColors.surface,
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(100),
             ),

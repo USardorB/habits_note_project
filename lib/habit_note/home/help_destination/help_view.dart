@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
 
 class HelpView extends StatelessWidget {
   const HelpView({super.key});
@@ -12,26 +11,24 @@ class HelpView extends StatelessWidget {
         title: const Text('Help'),
         titleTextStyle: context.textTheme.headlineLarge,
         elevation: 0,
-        backgroundColor: primaryColor,
+        backgroundColor: context.appColors.primary,
       ),
       body: Column(
         children: [
           DecoratedBox(
-            decoration: BoxDecoration(color: primaryColor),
+            decoration: BoxDecoration(color: context.appColors.primary),
             child: SizedBox(
               height: 200,
               child: Center(
-                  child: Text(
-                'User Guide',
-                style: context.textTheme.displayLarge!
-                    .copyWith(color: Colors.white),
-              )),
+                child:
+                    Text('User Guide', style: context.textTheme.displayLarge),
+              ),
             ),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 18, horizontal: 42),
             decoration: BoxDecoration(
-              color: primaryColor,
+              color: context.appColors.primary,
               borderRadius: BorderRadius.circular(10),
             ),
             child: const ListTile(
@@ -48,7 +45,7 @@ class HelpView extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 18, horizontal: 42),
             decoration: BoxDecoration(
-              color: primaryColor,
+              color: context.appColors.primary,
               borderRadius: BorderRadius.circular(10),
             ),
             child: const ListTile(
@@ -65,7 +62,7 @@ class HelpView extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 18, horizontal: 42),
             decoration: BoxDecoration(
-              color: primaryColor,
+              color: context.appColors.primary,
               borderRadius: BorderRadius.circular(10),
             ),
             child: const ListTile(

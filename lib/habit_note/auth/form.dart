@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 
 class AuthForm extends StatelessWidget {
   final TextEditingController? name;

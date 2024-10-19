@@ -1,11 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/const/colors.dart';
-import 'package:flutter_application_1/const/images.dart';
-import 'package:flutter_application_1/dialog/filter_dialog.dart';
-import 'package:flutter_application_1/dialog/chose_one_option_dialog.dart';
-import 'package:flutter_application_1/enum/option_dialog_type.dart';
-import 'package:flutter_application_1/extension/build_context.dart';
-import 'package:flutter_application_1/extension/sized_box.dart';
+import 'package:flutter_application_1/consts/images.dart';
+import 'package:flutter_application_1/dialogs/filter_dialog.dart';
+import 'package:flutter_application_1/dialogs/chose_one_option_dialog.dart';
+import 'package:flutter_application_1/enums/option_dialog_type.dart';
+import 'package:flutter_application_1/extensions/build_context.dart';
+import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_note_view.dart';
 import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_todos_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -53,8 +54,8 @@ class _HomeVeiwState extends State<HomeVeiw> {
           if (option == 2) Navigator.push(context, AddOrUpdateTodoView.route());
         },
         shape: const CircleBorder(),
-        backgroundColor: primaryColor,
-        foregroundColor: secondaryColor,
+        backgroundColor: context.appColors.primary,
+        foregroundColor: context.appColors.surface,
         child: const Icon(Icons.add, size: 48),
       ),
       body: Column(
