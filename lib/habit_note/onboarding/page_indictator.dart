@@ -20,7 +20,7 @@ class PageIndicator extends StatelessWidget {
             decoration: BoxDecoration(
               color: index == this.index
                   ? context.appColors.primary
-                  : context.appColors.surface,
+                  : context.appColors.onError.withOpacity(0.15),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(100),
             ),

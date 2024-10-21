@@ -50,8 +50,12 @@ class _HomeVeiwState extends State<HomeVeiw> {
             context,
             OptionDialogType.editorSelection,
           );
-          if (option == 1) Navigator.push(context, AddOrUpdateNoteView.route());
-          if (option == 2) Navigator.push(context, AddOrUpdateTodoView.route());
+          if (option == 1) {
+            Navigator.push(context, AddOrUpdateNoteView.route());
+          }
+          if (option == 2) {
+            Navigator.push(context, AddOrUpdateTodoView.route());
+          }
         },
         shape: const CircleBorder(),
         backgroundColor: context.appColors.primary,

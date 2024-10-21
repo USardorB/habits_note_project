@@ -4,7 +4,8 @@ import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/forgot_password/forgot_password_view.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 import 'package:flutter_application_1/habit_note/auth/register/register_view.dart';
-import 'package:flutter_application_1/habit_note/home/home_page.dart';
+import 'package:flutter_application_1/services/auth/bloc/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogInView extends StatefulWidget {
   const LogInView({super.key});
@@ -19,6 +20,7 @@ class LogInView extends StatefulWidget {
 class _LogInViewState extends State<LogInView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     _email = TextEditingController();
@@ -41,8 +43,7 @@ class _LogInViewState extends State<LogInView> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: [
             Text(
               'Welcome back !',
@@ -53,7 +54,7 @@ class _LogInViewState extends State<LogInView> {
               style: context.textTheme.displayMedium,
             ),
             100.h,
-            AuthForm(email: _email, password: _password),
+            AuthForm(email: _email, password: _password, formKey: _formKey),
             Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               TextButton(
                 onPressed: () => Navigator.pushReplacement(
@@ -90,11 +91,16 @@ class _LogInViewState extends State<LogInView> {
             ),
             120.h,
             ElevatedButton(
-              onPressed: () => Navigator.pushAndRemoveUntil(
-                context,
-                HomePage.route(),
-                (route) => false,
-              ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<AuthBloc>().add(
+                        AuthEventSignIn(
+                          email: _email.text,
+                          password: _password.text,
+                        ),
+                      );
+                }
+              },
               child: const Text('LOG IN'),
             )
           ],

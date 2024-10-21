@@ -10,7 +10,7 @@ ThemeData lightTheme = ThemeData(
     secondary: Color(0xffFFFFFF),
     onSecondary: Color(0x88000000),
     error: Colors.red,
-    onError: Color(0xffFFFFFF),
+    onError: Color(0xFF403E3E),
     surface: Color(0xffFFFFFF),
     onSurface: Colors.black,
   ),

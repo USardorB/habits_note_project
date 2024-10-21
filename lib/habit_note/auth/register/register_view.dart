@@ -3,7 +3,8 @@ import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/auth/form.dart';
 import 'package:flutter_application_1/habit_note/auth/login/login_view.dart';
-import 'package:flutter_application_1/habit_note/home/home_page.dart';
+import 'package:flutter_application_1/services/auth/bloc/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -21,6 +22,7 @@ class _RegisterViewState extends State<RegisterView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
   late final TextEditingController _rePassword;
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     _name = TextEditingController();
@@ -47,7 +49,7 @@ class _RegisterViewState extends State<RegisterView> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: ListView(children: [
           Text(
             'Let’s get to know you !',
             style: context.textTheme.titleMedium,
@@ -58,6 +60,7 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           24.h,
           AuthForm(
+            formKey: _formKey,
             name: _name,
             email: _email,
             password: _password,
@@ -104,11 +107,17 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           14.h,
           ElevatedButton(
-            onPressed: () => Navigator.pushAndRemoveUntil(
-              context,
-              HomePage.route(),
-              (route) => false,
-            ),
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context.read<AuthBloc>().add(
+                      AuthEventSignUp(
+                        name: _name.text,
+                        email: _email.text,
+                        password: _password.text,
+                      ),
+                    );
+              }
+            },
             child: const Text('CREATE ACCOUNT'),
           )
         ]),

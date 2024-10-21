@@ -36,6 +36,7 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.appColors.onError,
       appBar: AppBar(
         title: const Text('Add Note'),
         actions: [
@@ -55,16 +56,18 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
               focusedBorder: InputBorder.none,
             ),
           ),
-          TextField(
-            controller: _description,
-            maxLines: null,
-            minLines: 20,
-            decoration: InputDecoration(
-              hintText: 'Type something...',
-              hintStyle: context.textTheme.titleSmall,
-              border: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              enabledBorder: InputBorder.none,
+          Expanded(
+            child: TextField(
+              controller: _description,
+              maxLines: 10,
+              minLines: 5,
+              decoration: InputDecoration(
+                hintText: 'Type something...',
+                hintStyle: context.textTheme.titleSmall,
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+              ),
             ),
           ),
         ],

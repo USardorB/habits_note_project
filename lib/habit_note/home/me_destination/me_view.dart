@@ -5,7 +5,10 @@ import 'package:flutter_application_1/enums/confirmation_dialog_type.dart';
 import 'package:flutter_application_1/extensions/build_context.dart';
 import 'package:flutter_application_1/extensions/sized_box.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/about_view.dart';
+import 'package:flutter_application_1/habit_note/home/me_destination/account_settings.dart';
 import 'package:flutter_application_1/habit_note/home/me_destination/settings_view.dart';
+import 'package:flutter_application_1/services/auth/bloc/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MeView extends StatelessWidget {
   const MeView({super.key});
@@ -22,7 +25,18 @@ class MeView extends StatelessWidget {
           Row(
             children: [
               40.w,
-              Image.asset(profilePic, scale: 1.2),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, AccountSettings.route());
+                },
+                child: Badge(
+                  alignment: Alignment.bottomRight,
+                  largeSize: 25,
+                  label: Icon(Icons.edit, size: 24),
+                  backgroundColor: Colors.orange,
+                  child: Image.asset(profilePic, scale: 1.2),
+                ),
+              ),
               10.w,
               const Column(
                   mainAxisSize: MainAxisSize.min,
@@ -55,10 +69,13 @@ class MeView extends StatelessWidget {
           24.h,
           ElevatedButton.icon(
             onPressed: () async {
-              await showConfirmationDialog(
+              final shouldLogOut = await showConfirmationDialog(
                 context,
                 ConfirmationDialogType.logout,
               );
+              if (shouldLogOut && context.mounted) {
+                context.read<AuthBloc>().add(AuthEventSignOut());
+              }
             },
             label: const Text('LOG OUT'),
             icon: const Icon(Icons.logout),
