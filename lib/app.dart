@@ -5,6 +5,7 @@ import 'package:flutter_application_1/habit_note/home/home_page.dart';
 import 'package:flutter_application_1/habit_note/onboarding/onboarding_view.dart';
 import 'package:flutter_application_1/services/auth/bloc/auth_bloc.dart';
 import 'package:flutter_application_1/services/auth/firebase_auth_provider.dart';
+import 'package:flutter_application_1/services/storage/bloc/storage_bloc.dart';
 import 'package:flutter_application_1/themes/dark_theme.dart';
 import 'package:flutter_application_1/themes/light_theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,8 +28,13 @@ class _HabitNoteAppState extends State<HabitNoteApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthBloc>(
-      create: (context) => AuthBloc(FirebaseAuthProvider()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(FirebaseAuthProvider()),
+        ),
+        BlocProvider<StorageBloc>(create: (context) => StorageBloc()),
+      ],
       child: MaterialApp(
         title: 'HaBIT Note',
         home: const RootPage(),
@@ -59,10 +65,9 @@ class RootPage extends StatelessWidget {
       },
       builder: (context, state) {
         return switch (state.authStatus) {
-          AuthStatus.signedIn => HomePage(),
           AuthStatus.initial => SplashView(),
           AuthStatus.signedOut => OnboardingView(),
-          AuthStatus.needsVerification => HomePage(),
+          _ => HomePage(),
         };
       },
     );
@@ -75,6 +80,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<AuthBloc>().add(AuthEventInit());
+    context.read<StorageBloc>().add(StorageEventInit());
     return Scaffold(
       backgroundColor: context.appColors.primary,
       body: Center(child: Image.asset(logo)),

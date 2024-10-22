@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/extensions/build_context.dart';
-import 'package:flutter_application_1/habit_note/home/notes_destination/vertical_more_button.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/widgets/vertical_more_button.dart';
+import 'package:flutter_application_1/services/storage/bloc/storage_bloc.dart';
+import 'package:flutter_application_1/services/storage/note_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddOrUpdateNoteView extends StatefulWidget {
-  const AddOrUpdateNoteView({super.key});
+  final int? id;
+  const AddOrUpdateNoteView({super.key, this.id});
   static Route route() {
     return MaterialPageRoute(builder: (context) => const AddOrUpdateNoteView());
   }
@@ -38,6 +42,24 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
     return Scaffold(
       backgroundColor: context.appColors.onError,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              context.read<StorageBloc>().add(
+                    StorageEventCreateOrUpdate(
+                      NoteModel(
+                        id: widget.id ?? 0,
+                        isToDo: false,
+                        title: _title.text,
+                        isSyncedWithCloud: false,
+                        description: _description.text,
+                        colorCode: _color,
+                        creationDate: 'Today',
+                      ),
+                    ),
+                  );
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         title: const Text('Add Note'),
         actions: [
           VerticalMoreBtton(onColorSelected: (x) => changeColor(x)),

@@ -1,15 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/consts/images.dart';
 import 'package:flutter_application_1/dialogs/filter_dialog.dart';
 import 'package:flutter_application_1/dialogs/chose_one_option_dialog.dart';
 import 'package:flutter_application_1/enums/option_dialog_type.dart';
 import 'package:flutter_application_1/extensions/build_context.dart';
-import 'package:flutter_application_1/extensions/sized_box.dart';
-import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_note_view.dart';
-import 'package:flutter_application_1/habit_note/home/notes_destination/add_or_update_todos_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/views/add_or_update_note_view.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/views/add_or_update_todos_view.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/views/empty_notes_view.dart';
+import 'package:flutter_application_1/habit_note/home/notes_destination/views/notes_list_view.dart';
+import 'package:flutter_application_1/services/storage/bloc/storage_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeVeiw extends StatefulWidget {
   const HomeVeiw({super.key});
@@ -62,20 +63,16 @@ class _HomeVeiwState extends State<HomeVeiw> {
         foregroundColor: context.appColors.surface,
         child: const Icon(Icons.add, size: 48),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          SvgPicture.asset(
-            noNotes,
-            alignment: AlignmentDirectional.center,
-          ),
-          36.h,
-          const Text(
-            'Create your first note !',
-            textAlign: TextAlign.center,
-          ),
-        ],
+      body: BlocBuilder<StorageBloc, StorageState>(
+        builder: (context, state) {
+          return switch (state.status) {
+            StorageStatus.hasNote => NotesListView(
+                isGirdView: false,
+                notes: state.notes,
+              ),
+            _ => EmptyNotesView(),
+          };
+        },
       ),
     );
   }

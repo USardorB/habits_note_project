@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _init(AuthEventInit event, Emitter<AuthState> emit) async {
     final user = _provider.currentUser;
     if (user != null) {
+      await Future.delayed(Duration(milliseconds: 300));
       if (user.isEmailVerified) {
         emit(AuthState(authStatus: AuthStatus.signedIn, user: user));
       } else {

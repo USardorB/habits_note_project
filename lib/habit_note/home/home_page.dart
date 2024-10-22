@@ -10,9 +10,9 @@ import 'package:flutter_application_1/habit_note/home/ocr_destination/ocr_view.d
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  static Route route() => MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      );
+  static Route route() {
+    return MaterialPageRoute(builder: (context) => const HomePage());
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();

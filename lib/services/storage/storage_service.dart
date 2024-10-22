@@ -12,7 +12,6 @@ class StorageService {
   factory StorageService() => _singleton;
 
   Database? _db;
-  List<NoteModel> _notes = [];
 
   Database _getDatabaseOrThrow() {
     final db = _db;
@@ -39,7 +38,7 @@ class StorageService {
     return NoteModel.fromRow(result.first);
   }
 
-  Future<List<NoteModel>> readAllNotes(int id) async {
+  Future<List<NoteModel>> readAllNotes() async {
     final db = _getDatabaseOrThrow();
     final result = await db.query(tableName);
     if (result.isEmpty) throw CouldNotFindNote();

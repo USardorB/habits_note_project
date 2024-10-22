@@ -6,7 +6,7 @@ class NoteModel {
   final bool isSyncedWithCloud;
   final String title;
   final String description;
-  final int colorIndex;
+  final int colorCode;
   final String creationDate;
 
   NoteModel({
@@ -15,7 +15,7 @@ class NoteModel {
     required this.title,
     required this.isSyncedWithCloud,
     required this.description,
-    required this.colorIndex,
+    required this.colorCode,
     required this.creationDate,
   });
 
@@ -24,7 +24,7 @@ class NoteModel {
         isToDo = map[isToDoColumn] == 1 ? true : false,
         title = map[titleColumn] as String,
         description = map[descriptionColumn] as String,
-        colorIndex = map[idColumn] as int,
+        colorCode = map[idColumn] as int,
         creationDate = map[dateColumn] as String,
         isSyncedWithCloud = map[isSyncedColumn] == 1 ? true : false;
 
@@ -32,7 +32,7 @@ class NoteModel {
         isToDoColumn: isToDo ? 1 : 0,
         titleColumn: title,
         descriptionColumn: description,
-        colorColumn: colorIndex,
+        colorColumn: colorCode,
         dateColumn: creationDate,
         isSyncedColumn: isSyncedWithCloud ? 1 : 0,
       };
@@ -40,7 +40,7 @@ class NoteModel {
   NoteModel copyWith({
     String? title,
     String? description,
-    int? colorIndex,
+    int? colorCode,
     bool? isSyncedWithCloud,
   }) =>
       NoteModel(
@@ -48,8 +48,14 @@ class NoteModel {
         isToDo: isToDo,
         title: title ?? this.title,
         description: description ?? this.description,
-        colorIndex: colorIndex ?? this.colorIndex,
+        colorCode: colorCode ?? this.colorCode,
         creationDate: creationDate,
         isSyncedWithCloud: isSyncedWithCloud ?? this.isSyncedWithCloud,
       );
+
+  @override
+  bool operator ==(covariant other) => hashCode == other.hashCode;
+
+  @override
+  int get hashCode => id.hashCode;
 }
