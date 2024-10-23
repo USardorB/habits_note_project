@@ -4,7 +4,14 @@ import 'package:flutter_application_1/extensions/build_context.dart';
 
 class VerticalMoreBtton extends StatelessWidget {
   final Function(int) onColorSelected;
-  const VerticalMoreBtton({super.key, required this.onColorSelected});
+  final int id;
+  final Function(int) deleteNote;
+  const VerticalMoreBtton({
+    super.key,
+    required this.onColorSelected,
+    required this.deleteNote,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,8 @@ class VerticalMoreBtton extends StatelessWidget {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const ListTile(
+                ListTile(
+                  onTap: () => deleteNote(id),
                   contentPadding: EdgeInsets.all(24),
                   leading: Icon(Icons.delete_outline, size: 36),
                   title: Text('Delete note'),

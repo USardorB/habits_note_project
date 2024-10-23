@@ -2,7 +2,7 @@ import 'package:flutter_application_1/services/storage/storage_constants.dart';
 
 class NoteModel {
   final int id;
-  final bool isToDo;
+  final bool isNote;
   final bool isSyncedWithCloud;
   final String title;
   final String description;
@@ -11,7 +11,7 @@ class NoteModel {
 
   NoteModel({
     required this.id,
-    required this.isToDo,
+    required this.isNote,
     required this.title,
     required this.isSyncedWithCloud,
     required this.description,
@@ -21,15 +21,15 @@ class NoteModel {
 
   NoteModel.fromRow(Map<String, Object?> map)
       : id = map[idColumn] as int,
-        isToDo = map[isToDoColumn] == 1 ? true : false,
+        isNote = map[isNoteColumn] == 1 ? true : false,
         title = map[titleColumn] as String,
         description = map[descriptionColumn] as String,
-        colorCode = map[idColumn] as int,
+        colorCode = map[colorColumn] as int,
         creationDate = map[dateColumn] as String,
         isSyncedWithCloud = map[isSyncedColumn] == 1 ? true : false;
 
   Map<String, Object?> toRow() => {
-        isToDoColumn: isToDo ? 1 : 0,
+        isNoteColumn: isNote ? 1 : 0,
         titleColumn: title,
         descriptionColumn: description,
         colorColumn: colorCode,
@@ -45,7 +45,7 @@ class NoteModel {
   }) =>
       NoteModel(
         id: id,
-        isToDo: isToDo,
+        isNote: isNote,
         title: title ?? this.title,
         description: description ?? this.description,
         colorCode: colorCode ?? this.colorCode,

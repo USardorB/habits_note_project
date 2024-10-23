@@ -21,6 +21,7 @@ class HomeVeiw extends StatefulWidget {
 
 class _HomeVeiwState extends State<HomeVeiw> {
   Color? color;
+  bool isGirdViwe = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,13 +34,11 @@ class _HomeVeiwState extends State<HomeVeiw> {
               color = await showColorFilter(context);
               setState(() {});
             },
-            icon: Icon(
-              Icons.color_lens,
-              color: color,
-            ),
+            icon: Icon(Icons.color_lens, color: color),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => setState(() => isGirdViwe = !isGirdViwe),
+            isSelected: isGirdViwe,
             icon: const Icon(Icons.grid_view),
             selectedIcon: const Icon(Icons.view_stream),
           ),
@@ -67,7 +66,7 @@ class _HomeVeiwState extends State<HomeVeiw> {
         builder: (context, state) {
           return switch (state.status) {
             StorageStatus.hasNote => NotesListView(
-                isGirdView: false,
+                isGirdView: isGirdViwe,
                 notes: state.notes,
               ),
             _ => EmptyNotesView(),

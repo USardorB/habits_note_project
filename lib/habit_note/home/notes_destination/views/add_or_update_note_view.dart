@@ -6,10 +6,11 @@ import 'package:flutter_application_1/services/storage/note_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddOrUpdateNoteView extends StatefulWidget {
-  final int? id;
-  const AddOrUpdateNoteView({super.key, this.id});
-  static Route route() {
-    return MaterialPageRoute(builder: (context) => const AddOrUpdateNoteView());
+  final NoteModel? note;
+  const AddOrUpdateNoteView({super.key, this.note});
+  static Route route([NoteModel? n]) {
+    return MaterialPageRoute(
+        builder: (context) => AddOrUpdateNoteView(note: n));
   }
 
   @override
@@ -23,8 +24,14 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
 
   @override
   void initState() {
-    _title = TextEditingController();
-    _description = TextEditingController();
+    if (widget.note == null) {
+      _title = TextEditingController();
+      _description = TextEditingController();
+    } else {
+      _title = TextEditingController(text: widget.note?.title);
+      _description = TextEditingController(text: widget.note?.description);
+      _color = widget.note?.colorCode ?? 0;
+    }
     super.initState();
   }
 
@@ -37,62 +44,77 @@ class _AddOrUpdateNoteViewState extends State<AddOrUpdateNoteView> {
 
   void changeColor(int x) => setState(() => _color = x);
 
+  void saveNoteIfNotEmpty(BuildContext context) {
+    context.read<StorageBloc>().add(
+          StorageEventCreateOrUpdate(
+            NoteModel(
+              id: widget.note?.id ?? 0,
+              isNote: false,
+              title: _title.text,
+              isSyncedWithCloud: false,
+              description: _description.text,
+              colorCode: _color,
+              creationDate: 'Today',
+            ),
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.appColors.onError,
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              context.read<StorageBloc>().add(
-                    StorageEventCreateOrUpdate(
-                      NoteModel(
-                        id: widget.id ?? 0,
-                        isToDo: false,
-                        title: _title.text,
-                        isSyncedWithCloud: false,
-                        description: _description.text,
-                        colorCode: _color,
-                        creationDate: 'Today',
-                      ),
-                    ),
-                  );
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
-        title: const Text('Add Note'),
-        actions: [
-          VerticalMoreBtton(onColorSelected: (x) => changeColor(x)),
-        ],
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: _title,
-            style: context.textTheme.headlineLarge,
-            decoration: InputDecoration(
-              hintText: 'Title',
-              hintStyle: context.textTheme.displayLarge,
-              border: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        saveNoteIfNotEmpty(context);
+        Navigator.pop(context);
+      },
+      child: Scaffold(
+        backgroundColor: context.appColors.onError,
+        appBar: AppBar(
+          title: const Text('Add Note'),
+          actions: [
+            VerticalMoreBtton(
+              id: widget.note?.id ?? -1,
+              onColorSelected: (x) => changeColor(x),
+              deleteNote: (id) {
+                if (id != -1) {
+                  context.read<StorageBloc>().add(StorageEventDelete(id));
+                }
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
             ),
-          ),
-          Expanded(
-            child: TextField(
-              controller: _description,
-              maxLines: 10,
-              minLines: 5,
+          ],
+        ),
+        body: Column(
+          children: [
+            TextField(
+              controller: _title,
+              style: context.textTheme.headlineLarge,
               decoration: InputDecoration(
-                hintText: 'Type something...',
-                hintStyle: context.textTheme.titleSmall,
+                hintText: 'Title',
+                hintStyle: context.textTheme.displayLarge,
                 border: InputBorder.none,
-                focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: TextField(
+                controller: _description,
+                maxLines: 10,
+                minLines: 5,
+                decoration: InputDecoration(
+                  hintText: 'Type something...',
+                  hintStyle: context.textTheme.titleSmall,
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
